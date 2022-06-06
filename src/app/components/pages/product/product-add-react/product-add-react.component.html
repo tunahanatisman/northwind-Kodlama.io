@@ -1,0 +1,39 @@
+<h3>Yeni ürün Ekle -Reactive</h3>
+ 
+<form [formGroup]="productAddForm" (ngSubmit)="add()" >
+<div class="form-group">
+    <input type="text" id="name" formControlName="name" class="form-control" placeholder="ürün adı giriniz">
+    <div class="alert alert-danger" *ngIf="productAddForm.get('name').hasError('required') && productAddForm.get('name').dirty"> ürün adı zorunludur</div>
+</div>
+<div class="form-group">
+    <input type="text" id="unitPrice" formControlName="unitPrice" class="form-control" placeholder="fiyat giriniz">
+    <div class="alert alert-danger" *ngIf="productAddForm.get('unitPrice').hasError('required') && productAddForm.get('unitPrice').dirty"> fiyat zorunludur</div>
+</div>
+<div class="form-group">
+    <input type="text" id="description" formControlName="description" class="form-control" placeholder="stok giriniz">
+    <div class="alert alert-danger" *ngIf="productAddForm.get('description').hasError('required') && productAddForm.get('description').dirty"> stok zorunludur</div>
+</div>
+<div class="form-group">
+    <select class="form-control"
+      required
+      name="categoryId"
+      id="categoryId"
+      
+      formControlName="categoryId"
+    >
+      <option
+        *ngFor="let category of categories"
+        [value]="category.id"
+      >
+      {{category.name}}
+    </option>
+    </select>
+    <div
+      class="alert alert-danger"
+      *ngIf="productAddForm.get('categoryId') && productAddForm.get('categoryId').touched"
+    >
+      kategori gereklidir
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="productAddForm.invalid">Ekle</button>
+</form>

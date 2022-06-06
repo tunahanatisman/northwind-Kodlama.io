@@ -1,0 +1,25 @@
+<span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText [(ngModel)]="filterText" placeholder="Search">         
+</span>
+
+
+<div class="row">
+  
+    <div *ngFor="let product of products | filter:filterText"  class="col-md-4 ">
+        <p-card  header="{{product.name   }}"   [style]="{ 'width': '16em','height': '35em','margin': '1em'}">
+            <ng-template pTemplate="header" >
+                <img alt="Card" src="https://via.placeholder.com/150">
+            </ng-template>
+      
+            <p> Fİyatı:{{product.unitPrice |currency:'USD'}}</p>
+            <p> Stok:{{product.unitsInStock}}</p>
+            <p> Vat:{{product.unitPrice| vat:10 |currency:'USD'}}</p>
+            <div  >
+                sayfa yok  </div>
+           
+        </p-card>
+        
+    </div>
+  
+</div>

@@ -1,0 +1,8 @@
+<span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText [(ngModel)]="filterText" placeholder="Search">         
+</span>
+
+
+
+<p-listbox [options]="categories | category:filterText" [(ngModel)]="selectedCategory" (click)="changeCategory()" optionLabel="name"></p-listbox>
